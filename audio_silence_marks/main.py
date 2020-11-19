@@ -1,6 +1,6 @@
-"""Audipo auto marker.
+"""
 Usage:
-  audipo-auto-marker PATH GLOB [-f FORMAT] [-l] [-n NOISE_THRESHOLD] [-d DURATION]
+  audio_silence_marks PATH GLOB [-f FORMAT] [-l] [-n NOISE_THRESHOLD] [-d DURATION]
 
 Processes audio file FILE using FFMPEG and outputs Audipo markers JSON with the list of
 spots placed in the middle of silence intervals.
