@@ -28,7 +28,7 @@ $ audio_silence_marks . '**/*.mp3' > marks.audipomark
 
 Then upload this file to your phone's directory `Interal Storage/Audipo/Mark`, e.g.: 
 ```
-$ adb push marks.audipomark > /storage/emulated/0/Audipo/Mark/
+$ adb push marks.audipomark /storage/emulated/0/Audipo/Mark/
 ```
 
 Open your Audipo player, go to `Menu > Preferences` and click on `Import all marks` item.
