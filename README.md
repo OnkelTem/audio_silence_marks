@@ -36,6 +36,17 @@ Restart the player.
 
 It may not work right away due to some issues with paths. 
 
+## Result
+
+Example:
+
+Unit 24             |  Unit 25
+:-------------------------:|:-------------------------:
+![image](https://user-images.githubusercontent.com/114060/99714622-dc196b80-2ab6-11eb-977d-cd3d58ff1786.png)  |  ![image](https://user-images.githubusercontent.com/114060/99714644-e2a7e300-2ab6-11eb-996a-5b7e0ec9b5bb.png)
+
+
+
+
 
 ## Docs
 
