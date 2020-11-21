@@ -35,6 +35,14 @@ $ adb push marks.audipomark /storage/emulated/0/Audipo/Mark/
 Open your Audipo player, go to `Menu > Preferences` and click on `Import all marks` item.
 Restart the player.
 
+## Result
+
+Example:
+
+Unit 23             |  Unit 24
+:-------------------------:|:-------------------------:
+![image](https://user-images.githubusercontent.com/114060/99715000-5cd86780-2ab7-11eb-8707-b7235bebebf3.png)  |  ![image](https://user-images.githubusercontent.com/114060/99714622-dc196b80-2ab6-11eb-977d-cd3d58ff1786.png)
+
 ## Docs
 
 ```
