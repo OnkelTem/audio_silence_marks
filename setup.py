@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="audio_silence_marks",
-    version="0.0.1",
+    version="0.1.0",
     description="Tool for creating silence marks for audio files",
     long_description=long_description,
     long_description_content_type="text/markdown",
