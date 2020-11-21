@@ -16,7 +16,9 @@ player marks format is supported.
 
 ## Installation
 
-`pip install` is in development.
+```
+$ pip install audio_silence_marks
+```
 
 ## Usage
 
@@ -48,20 +50,36 @@ Unit 23             |  Unit 24
 ```
 $ audio_silence_marks --help
 
-Usage:
-  audio_silence_marks PATH GLOB [-f FORMAT] [-l] [-n NOISE_THRESHOLD] [-d DURATION]
+Usage: audio_silence_marks [OPTIONS] PATH GLOB
 
-Processes audio file FILE using FFMPEG and outputs Audipo markers JSON with the list of
-spots placed in the middle of silence intervals.
+  Processes audio files using FFmpeg filter silencedetect and outputs Audipo
+  markers JSON with the list of spots placed in the middle of silence
+  intervals.
+
+  More info on using GLOBS: https://docs.python.org/3.8/library/glob.html
 
 Arguments:
-  PATH                Path to files. E.g: "."
-  GLOB                Glob pattern for selecting files. E.g.: "**/*.mp3"
-                      @see: https://docs.python.org/3.8/library/glob.html
-Options:
-  -f FORMAT           Marks output format. [Default: audipo]
-  -l                  Simply list files not doing anything. Useful for globs debugging.
-  -n NOISE_THRESHOLD  Maximum volume of the noise treated as silence in -dB [Default: 50]
-  -d DURATION         Minimum length of the silent interval in seconds [Default: 1]
+  PATH  is a path to files. E.g: "."  [required]
+  GLOB  argument is a pattern for selecting files. E.g.: '**/*.mp3'
+        [required]
 
+
+Options:
+  -t, --target [audipo]           Target format for marks.  [default: audipo]
+  -n, --noise INTEGER             Maximum volume of the noise treated as
+                                  silence in -dB  [default: 50]
+
+  -d, --noise INTEGER             Minimum length of the silent interval in
+                                  seconds  [default: 1]
+
+  -l, --list                      Simply lists matched files. Useful for GLOB
+                                  debugging.  [default: False]
+
+  --install-completion [bash|zsh|fish|powershell|pwsh]
+                                  Install completion for the specified shell.
+  --show-completion [bash|zsh|fish|powershell|pwsh]
+                                  Show completion for the specified shell, to
+                                  copy it or customize the installation.
+
+  --help                          Show this message and exit.
 ```

@@ -20,10 +20,10 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     install_requires=[
-        "docopt",
+        "typer",
     ],
     entry_points={
-        "console_scripts": ["audio_silence_marks=audio_silence_marks.main:main"],
+        "console_scripts": ["audio_silence_marks=audio_silence_marks.main:cli"],
     },
     python_requires=">=3.6",
 )
