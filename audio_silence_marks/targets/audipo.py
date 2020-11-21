@@ -41,7 +41,7 @@ def output_audipo_file(file_info: FileInfo) -> AudipoFile:
 
 def main(files_info: List[FileInfo]) -> None:
     output = {
-        "externalStorageDirectory": "/storage/emulated/0",
+        "externalStorageDirectory": "",
         "files": [output_audipo_file(file_info) for file_info in files_info],
     }
     print(json.dumps(output))

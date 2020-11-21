@@ -6,16 +6,17 @@ Processes audio file FILE using FFMPEG and outputs Audipo markers JSON with the 
 spots placed in the middle of silence intervals.
 
 Arguments:
-  PATH                Path to files. [Default: '.']
-  GLOB                Glob patter for selecting files. [Default: '**/*.mp3']
+  PATH                Path to files. E.g: "."
+  GLOB                Glob pattern for selecting files. E.g.: "**/*.mp3"
                       @see: https://docs.python.org/3.8/library/glob.html
 Options:
   -f FORMAT           Marks output format. [Default: audipo]
   -l                  Simply list files not doing anything. Useful for globs debugging.
-  -n NOISE_THRESHOLD  Maximum volume of the noise treated as silence in dB [Default: -50]
+  -n NOISE_THRESHOLD  Maximum volume of the noise treated as silence in -dB [Default: 50]
   -d DURATION         Minimum length of the silent interval in seconds [Default: 1]
 
 """
+# -a (l|m|r)          Mark alignment in the interval. [Default: r]
 import subprocess
 import re
 import sys
@@ -27,6 +28,10 @@ from audio_silence_marks.targets import audipo
 from audio_silence_marks.types import FileInfo
 
 
+def log(msg) -> None:
+    print(msg, end="", flush=True, file=sys.stderr)
+
+
 def main() -> None:
     args = docopt(__doc__)
     p = Path(args["PATH"])
@@ -35,21 +40,24 @@ def main() -> None:
     if args["-l"]:
         for x in g:
             if x.is_file():
-                print(x)
+                print(x.relative_to(args["PATH"]))
         return
     for x in g:
         if x.is_file():
+            log(f"File: {x}... ")
             try:
+                intervals = get_file_intervals(x, args["-n"], args["-d"])
                 files_info.append(
                     {
-                        "path": x.parent,
+                        "path": x.parent.relative_to(args["PATH"]),
                         "file": x.name,
                         "size": os.path.getsize(x),
-                        "intervals": get_file_intervals(x),
+                        "intervals": intervals,
                     }
                 )
+                log(f"processed {len(intervals)} intervals\n")
             except ValueError as err:
-                print(f"Skipping file {x}: {err}", file=sys.stderr)
+                log(f"(skipped) Error: {err}\n")
     if args["-f"] == "audipo":
         audipo.main(files_info)
 
@@ -61,9 +69,20 @@ re_parts = [
 ]
 
 
-def get_file_intervals(file: Path) -> List[List[int]]:
+def get_file_intervals(
+    file: Path, noise: int = 50, duration: int = 1
+) -> List[List[int]]:
     proc = subprocess.run(
-        ["ffmpeg", "-i", file, "-af", "silencedetect=n=-50dB:d=1", "-f", "null", "-"],
+        [
+            "ffmpeg",
+            "-i",
+            file,
+            "-af",
+            f"silencedetect=n=-{noise}dB:d={duration}",
+            "-f",
+            "null",
+            "-",
+        ],
         check=True,
         encoding="utf-8",
         text=True,

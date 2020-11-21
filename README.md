@@ -1,6 +1,6 @@
 # Create silence marks for your audio files
 
-Creates lists of silent spots in audio files using [FFmpeg](https://ffmpeg.org/) filter 
+Creates lists of silent spots in audio files using **FFmpeg** with filter 
 [silencedetect](https://ffmpeg.org/ffmpeg-filters.html#silencedetect).
 
 Currently only [Audipo](https://play.google.com/store/apps/details?id=jp.ne.sakura.ccice.audipo&hl=en_US&gl=US)
@@ -11,6 +11,7 @@ player marks format is supported.
 ## Prerequisites
 
 - [Python 3.8+](https://www.python.org/)
+- [FFmpeg](https://ffmpeg.org/)
 - Linux (haven't tested on Windows/Mac yet)
 
 ## Installation
@@ -34,9 +35,6 @@ $ adb push marks.audipomark /storage/emulated/0/Audipo/Mark/
 Open your Audipo player, go to `Menu > Preferences` and click on `Import all marks` item.
 Restart the player.
 
-It may not work right away due to some issues with paths. 
-
-
 ## Docs
 
 ```
@@ -49,14 +47,13 @@ Processes audio file FILE using FFMPEG and outputs Audipo markers JSON with the 
 spots placed in the middle of silence intervals.
 
 Arguments:
-  PATH                Path to files. [Default: '.']
-  GLOB                Glob patter for selecting files. [Default: '**/*.mp3']
+  PATH                Path to files. E.g: "."
+  GLOB                Glob pattern for selecting files. E.g.: "**/*.mp3"
                       @see: https://docs.python.org/3.8/library/glob.html
 Options:
   -f FORMAT           Marks output format. [Default: audipo]
   -l                  Simply list files not doing anything. Useful for globs debugging.
-  -n NOISE_THRESHOLD  Maximum volume of the noise treated as silence in dB [Default: -50]
+  -n NOISE_THRESHOLD  Maximum volume of the noise treated as silence in -dB [Default: 50]
   -d DURATION         Minimum length of the silent interval in seconds [Default: 1]
-```
 
-**Note**: `NOISE_THRESHOLD` and `DURATION` doesn't have any effect yet.
+```
