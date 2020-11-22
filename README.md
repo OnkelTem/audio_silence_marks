@@ -1,4 +1,5 @@
-# Create silence marks for your audio files
+Create silence marks for your audio files
+=
 
 Creates lists of silent spots in audio files using **FFmpeg** with filter 
 [silencedetect](https://ffmpeg.org/ffmpeg-filters.html#silencedetect).
@@ -6,21 +7,22 @@ Creates lists of silent spots in audio files using **FFmpeg** with filter
 Currently only [Audipo](https://play.google.com/store/apps/details?id=jp.ne.sakura.ccice.audipo&hl=en_US&gl=US)
 player marks format is supported.
 
-**This tool is under development, don't expect much for now.**
-
-## Prerequisites
+Prerequisites
+-
 
 - [Python 3.8+](https://www.python.org/)
 - [FFmpeg](https://ffmpeg.org/)
 - Linux (haven't tested on Windows/Mac yet)
 
-## Installation
+Installation
+-
 
 ```
 $ pip install audio_silence_marks
 ```
 
-## Usage
+Usage
+-
 
 Run the tool against one file or a directory tree:
 
@@ -37,7 +39,8 @@ $ adb push marks.audipomark /storage/emulated/0/Audipo/Mark/
 Open your Audipo player, go to `Menu > Preferences` and click on `Import all marks` item.
 Restart the player.
 
-## Result
+Result
+-
 
 Example:
 
@@ -45,7 +48,8 @@ Unit 23             |  Unit 24
 :-------------------------:|:-------------------------:
 ![image](https://user-images.githubusercontent.com/114060/99715000-5cd86780-2ab7-11eb-8707-b7235bebebf3.png)  |  ![image](https://user-images.githubusercontent.com/114060/99714622-dc196b80-2ab6-11eb-977d-cd3d58ff1786.png)
 
-## Docs
+Docs
+-
 
 ```
 $ audio_silence_marks --help
