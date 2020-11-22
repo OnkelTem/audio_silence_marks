@@ -6,8 +6,6 @@ Creates lists of silent spots in audio files using **FFmpeg** with filter
 Currently only [Audipo](https://play.google.com/store/apps/details?id=jp.ne.sakura.ccice.audipo&hl=en_US&gl=US)
 player marks format is supported.
 
-**This tool is under development, don't expect much for now.**
-
 ## Prerequisites
 
 - [Python 3.8+](https://www.python.org/)
