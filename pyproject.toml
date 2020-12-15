@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "audio_silence_marks"
-version = "0.1.1"
+version = "0.1.2"
 description = "Tool for creating silence marks for audio files"
 authors = ["OnkelTem <aneganov@gmail.com>"]
 license = "MIT"
@@ -16,6 +16,7 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.6"
 typer = "^0.3.2"
+importlib-metadata = {version = "^1.0", python = "<3.8"}
 
 [tool.poetry.dev-dependencies]
 
@@ -24,4 +25,4 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-audio_silence_marks = "audio_silence_marks.main:cli"
+audio_silence_marks = "audio_silence_marks.cli:main"
