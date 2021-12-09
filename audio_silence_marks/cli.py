@@ -39,7 +39,10 @@ def cli(
         help="Maximum volume of the noise treated as silence in -dB",
     ),
     duration: int = typer.Option(
-        1, "--noise", "-d", help="Minimum length of the silent interval in seconds"
+        1000,
+        "--duration",
+        "-d",
+        help="Minimum length of the silent interval in milliseconds",
     ),
     lst: bool = typer.Option(
         False,

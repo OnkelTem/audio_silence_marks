@@ -14,3 +14,6 @@
 /.venv
 /__pycache__
 /dev
+
+# Working stuff
+*.audipomark

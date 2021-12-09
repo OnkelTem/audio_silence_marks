@@ -14,7 +14,7 @@ class Target(str, Enum):
 
 
 def get_file_intervals(
-    file: Path, noise: int = 50, duration: int = 1
+    file: Path, noise: int = 50, duration: int = 1000
 ) -> List[List[int]]:
     proc = subprocess.run(
         [
@@ -22,7 +22,7 @@ def get_file_intervals(
             "-i",
             file,
             "-af",
-            f"silencedetect=n=-{noise}dB:d={duration}",
+            f"silencedetect=n=-{noise}dB:d={duration/1000}",
             "-f",
             "null",
             "-",
@@ -58,7 +58,7 @@ def err(msg) -> None:
     typer.secho(msg, fg=typer.colors.RED, nl=False, err=True)
 
 
-def main(path, glob, target, noise, duration, lst) -> None:
+def main(path, glob, target, noise: int, duration: int, lst) -> None:
     p = Path(path)
     g = p.glob(glob)
     files_info: List[FileInfo] = []
